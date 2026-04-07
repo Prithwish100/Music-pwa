@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Youtify</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="header">🎵 Youtify</div>
+
+  <input id="search" placeholder="Search songs...">
+
+  <div id="results" class="grid"></div>
+
+  <div id="player">
+    <div id="songInfo">Nothing playing</div>
+    <input type="range" id="progress" value="0">
+    <div class="controls">
+      <button onclick="audio.pause()">⏸</button>
+      <button onclick="audio.play()">▶</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+
+  <script>
+    document.getElementById("search").addEventListener("keypress", e => {
+      if (e.key === "Enter") search();
+    });
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
